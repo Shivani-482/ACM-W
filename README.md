@@ -1,1 +1,60 @@
 # ACM-W
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Derma - AI Skin Lesion Classifier</title>
+</head>
+<body>
+  <nav>
+    <b><a href="index1.html">Derma-AI</a></b>
+    <li align="right"><a href="index1.html" >Home</a>
+    <a href="projectdetail.html">Project Detail</a>
+    <a href="approach.html">Approach</a>
+    <a href="aboutus.html">About us</a></li>
+  </nav>
+  <div class="container">
+    <h1 align="center">Derma - AI Skin Lesion Classifier</h1>
+    <p align="center">Upload an image of a skin lesion to get AI-based classification with expert-backed information and treatments.</p>
+    <br>
+    <div>
+        <h7>Upload Image</h7>
+        <p>Drag and drop or click to upload</p>
+        <div>
+            <input type="file" id="imageInput" accept="image/*" />
+        </div>
+        <div id="imageContainer">
+            <img id="imageDisplay" src="#" alt="Uploaded image will appear here" style="display:none;" />
+            <p id="placeholderText">Your image will be shown here.</p>
+        </div>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const imageDisplay = document.getElementById('imageDisplay');
+        const placeholderText = document.getElementById('placeholderText');
+        const imageContainer = document.getElementById('imageContainer');
+        imageInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imageDisplay.src = e.target.result;
+                    imageDisplay.style.display = 'block';
+                    placeholderText.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imageDisplay.style.display = 'none';
+                placeholderText.style.display = 'block';
+                imageDisplay.src = "#";
+            }
+        });
+    </script>
+    <form>
+      <button type="submit">Predict</button>
+    </form>
+  </div>
+</body>
+</html>
